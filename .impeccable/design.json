@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-18T00:00:00.000Z",
+  "title": "Design System: URLy",
+  "extensions": {
+    "colorMeta": {
+      "amber":          { "role": "primary",  "displayName": "Warm Amber",       "canonical": "#f59e0b", "tonalRamp": ["#451a03","#78350f","#92400e","#b45309","#d97706","#f59e0b","#fbbf24","#fcd34d"] },
+      "amber-deep":     { "role": "primary",  "displayName": "Amber Deep",       "canonical": "#d97706", "tonalRamp": ["#451a03","#78350f","#92400e","#b45309","#d97706","#f59e0b","#fbbf24","#fcd34d"] },
+      "bg-base":        { "role": "neutral",  "displayName": "Base Black",        "canonical": "#09090b", "tonalRamp": ["#09090b","#18181b","#27272a","#3f3f46","#52525b","#71717a","#a1a1aa","#d4d4d8"] },
+      "bg-surface":     { "role": "neutral",  "displayName": "Surface Zinc",      "canonical": "#18181b", "tonalRamp": ["#09090b","#18181b","#27272a","#3f3f46","#52525b","#71717a","#a1a1aa","#d4d4d8"] },
+      "bg-elevated":    { "role": "neutral",  "displayName": "Elevated Zinc",     "canonical": "#27272a", "tonalRamp": ["#09090b","#18181b","#27272a","#3f3f46","#52525b","#71717a","#a1a1aa","#d4d4d8"] },
+      "text-primary":   { "role": "neutral",  "displayName": "Text Primary",      "canonical": "#fafafa", "tonalRamp": ["#09090b","#18181b","#27272a","#52525b","#71717a","#a1a1aa","#d4d4d8","#fafafa"] },
+      "text-muted":     { "role": "neutral",  "displayName": "Text Muted",        "canonical": "#a1a1aa", "tonalRamp": ["#09090b","#18181b","#27272a","#52525b","#71717a","#a1a1aa","#d4d4d8","#fafafa"] },
+      "error":          { "role": "tertiary", "displayName": "Error Red",         "canonical": "#f87171", "tonalRamp": ["#450a0a","#7f1d1d","#991b1b","#b91c1c","#ef4444","#f87171","#fca5a5","#fee2e2"] },
+      "success":        { "role": "secondary","displayName": "Success Emerald",   "canonical": "#34d399", "tonalRamp": ["#022c22","#064e3b","#065f46","#047857","#059669","#34d399","#6ee7b7","#d1fae5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only. One per page." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, dashboard page headers." },
+      "title": { "displayName": "Title", "purpose": "Card headers, widget labels." },
+      "body": { "displayName": "Body", "purpose": "Body copy, table content, descriptions." },
+      "label": { "displayName": "Label", "purpose": "Terminal-style uppercase tags, table column headers, status prefixes." },
+      "mono": { "displayName": "Mono", "purpose": "URLs, slugs, aliases, computed identifiers." }
+    },
+    "shadows": [
+      { "name": "glass-float", "value": "0 0 40px -12px rgba(255,255,255,0.12)", "purpose": "Form wrapper and result card ambient halo." },
+      { "name": "glass-float-sm", "value": "0 0 20px -8px rgba(255,255,255,0.15)", "purpose": "Smaller floating panels and inline glass elements." },
+      { "name": "amber-success-glow", "value": "0 0 32px -8px rgba(245,158,11,0.18)", "purpose": "Result card post-success only. Never used on other cards." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.4, 0, 0.2, 1)", "purpose": "Default easing for state transitions (color, opacity, border)." },
+      { "name": "ease-spring", "value": "cubic-bezier(0.34, 1.56, 0.64, 1)", "purpose": "Scale-up entrances. Used sparingly on result card." },
+      { "name": "duration-fast", "value": "150ms", "purpose": "Hover color transitions." },
+      { "name": "duration-standard", "value": "300ms", "purpose": "Layout, opacity, and reveal transitions." },
+      { "name": "fade-in-up", "value": "translateY(8px) → translateY(0), opacity 0 → 1, 350ms ease-out", "purpose": "Result card entrance after shortening." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px", "purpose": "Input row stacks → row; main responsive pivot." },
+      { "name": "lg", "value": "1024px", "purpose": "Dashboard table: some columns hide below lg." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Amber)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main CTA. Shorten URL on home, Refresh on dashboard. Amber fill, near-black text.",
+      "html": "<button class=\"ds-btn-primary\">Shorten URL</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #f59e0b; color: #0c0c0d; padding: 12px 20px; border-radius: 14px; font-family: Inter, system-ui, sans-serif; font-size: 14px; font-weight: 600; line-height: 1; border: none; cursor: pointer; transition: background 150ms ease, transform 150ms ease; } .ds-btn-primary:hover { background: #d97706; } .ds-btn-primary:active { transform: scale(0.97); } .ds-btn-primary:focus-visible { outline: 2px solid #f59e0b; outline-offset: 2px; } .ds-btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary actions: Copy, QR, deactivate-adjacent actions.",
+      "html": "<button class=\"ds-btn-ghost\">Copy</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: rgba(255,255,255,0.05); color: #d4d4d8; padding: 8px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.10); font-family: Inter, system-ui, sans-serif; font-size: 12px; font-weight: 600; line-height: 1; cursor: pointer; transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease; } .ds-btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.20); color: #fafafa; } .ds-btn-ghost:active { transform: scale(0.95); } .ds-btn-ghost:focus-visible { outline: 2px solid rgba(255,255,255,0.28); outline-offset: 2px; } .ds-btn-ghost.ds-btn-ghost--copied { color: #f59e0b; border-color: rgba(245,158,11,0.30); background: rgba(245,158,11,0.08); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-default",
+      "description": "URL input, alias input, API key input. Dark fill, subtle border, brightens on focus.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"https://example.com/your/very/long/path\" />",
+      "css": ".ds-input { display: block; width: 100%; background: rgba(9,9,11,0.60); color: #fafafa; padding: 12px 16px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.10); font-family: Inter, system-ui, sans-serif; font-size: 14px; line-height: 1.5; transition: border-color 150ms ease, box-shadow 150ms ease; } .ds-input::placeholder { color: #71717a; } .ds-input:focus { outline: none; border-color: rgba(255,255,255,0.28); box-shadow: 0 0 0 2px rgba(255,255,255,0.08); } .ds-input:disabled { opacity: 0.6; cursor: not-allowed; }"
+    },
+    {
+      "name": "Card / Container",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "Glass panels for the form wrapper and result card.",
+      "html": "<div class=\"ds-card\"><p class=\"ds-label\">YOUR SHORT LINK</p><p>Content here</p></div>",
+      "css": ".ds-card { background: rgba(24,24,27,0.80); border: 1px solid rgba(255,255,255,0.10); border-radius: 18px; padding: 20px; box-shadow: 0 0 40px -12px rgba(255,255,255,0.12); backdrop-filter: blur(12px); } .ds-card--success { box-shadow: 0 0 32px -8px rgba(245,158,11,0.18), 0 0 40px -12px rgba(255,255,255,0.08); } .ds-label { font-family: Inter, system-ui, sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #71717a; margin-bottom: 12px; }"
+    },
+    {
+      "name": "Short URL Display",
+      "kind": "custom",
+      "description": "The result short link: monospace, truncated, dotted underline, amber on hover.",
+      "html": "<a class=\"ds-shorturl\" href=\"#\">url-y.net/abc123</a>",
+      "css": ".ds-shorturl { font-family: ui-monospace, SFMono-Regular, 'Cascadia Code', Menlo, monospace; font-size: 14px; color: #fafafa; text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; padding: 8px 12px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.10); background: rgba(9,9,11,0.60); transition: color 150ms ease, border-color 150ms ease; } .ds-shorturl:hover { color: #f59e0b; border-color: rgba(245,158,11,0.30); }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "description": "Active / Inactive state indicator in the dashboard table.",
+      "html": "<span class=\"ds-badge ds-badge--active\">Active</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 9999px; font-family: Inter, system-ui, sans-serif; font-size: 12px; font-weight: 600; } .ds-badge--active { background: rgba(52,211,153,0.10); color: #34d399; box-shadow: inset 0 0 0 1px rgba(52,211,153,0.20); } .ds-badge--inactive { background: rgba(255,255,255,0.05); color: #71717a; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.10); }"
+    },
+    {
+      "name": "Header Navigation",
+      "kind": "nav",
+      "description": "Sticky top header with blur backdrop, logo left, nav right.",
+      "html": "<header class=\"ds-header\"><a href=\"/\" class=\"ds-logo\">URLy</a><nav><a href=\"/dashboard\" class=\"ds-nav-link\">Dashboard →</a></nav></header>",
+      "css": ".ds-header { position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; background: rgba(9,9,11,0.70); border-bottom: 1px solid rgba(255,255,255,0.10); backdrop-filter: blur(12px); } .ds-logo { font-family: Inter, system-ui, sans-serif; font-size: 20px; font-weight: 700; color: #fafafa; text-decoration: none; letter-spacing: -0.025em; transition: opacity 150ms ease; } .ds-logo:hover { opacity: 0.75; } .ds-nav-link { font-family: Inter, system-ui, sans-serif; font-size: 14px; font-weight: 500; color: #a1a1aa; text-decoration: none; transition: color 150ms ease; } .ds-nav-link:hover { color: #fafafa; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Terminal Precision",
+    "overview": "URLy operates like a well-engineered command-line tool translated into a visual interface. Every element is placed with intent; nothing decorates without earning its position. The zinc-950 background recedes like a dark terminal canvas, and warm amber — precise, rare, earned — marks the moments that matter: the action you take, the success you receive.\n\nThe palette is predominantly monochromatic. Zinc provides the depth hierarchy: five values from base to elevated, each doing a distinct spatial job. Amber appears only where the user's action or result is confirmed — the primary CTA and copy-confirmed state — which makes it feel like a signal rather than a style choice.\n\nTypography is controlled but not cold. Inter is used at extremes of weight: 800 for the hero that communicates the product in one line, 400 for the body that gets out of the way, monospace for slugs and URLs where precision matters.",
+    "keyCharacteristics": [
+      "Near-black zinc base with five-step tonal depth hierarchy",
+      "Single warm amber accent, used for primary CTA and confirmed success only",
+      "Monospace typography for all URL, slug, and code content",
+      "Tactile interactions: scale and color transitions on press",
+      "Dot-grid background texture at low opacity — implies structure without noise",
+      "Glass-morphism surfaces for floating panels"
+    ],
+    "rules": [
+      { "name": "The Amber Scarcity Rule", "body": "Amber is the only warm color in the system. It appears on ≤2 interactive elements per screen at any time. Using it elsewhere — text, borders, backgrounds — spends the signal budget without earning return.", "section": "colors" },
+      { "name": "The Five-Step Depth Rule", "body": "Zinc provides exactly five depth values: base, surface, elevated, text-muted, text-ghost. Never invent a sixth.", "section": "colors" },
+      { "name": "The Mono-for-Data Rule", "body": "Any string that is a URL, slug, identifier, or computed value renders in the monospace stack. Applying Inter to a slug collapses the terminal character.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "Surfaces at rest are flat. Glass glow appears on the two floating panels only. No other elements receive box-shadow at rest.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use monospace for every URL, slug, alias preview, and computed identifier.",
+      "Do add active:scale-[.97] or active:scale-95 to every interactive element.",
+      "Do keep amber to exactly one or two active elements per screen.",
+      "Do use the five-step zinc depth model for all surface layering decisions.",
+      "Do write labels in uppercase tracked Inter (font-semibold text-[11px] tracking-widest uppercase).",
+      "Do let the dot-grid show through glass surfaces at ≤8% opacity."
+    ],
+    "donts": [
+      "Don't add amber to text, borders, icons, or background areas — only CTA button fills and confirmed-copy states.",
+      "Don't introduce a second accent color.",
+      "Don't use font-mono for anything that isn't a URL, slug, alias, or computed identifier.",
+      "Don't stack glass surfaces (blur inside blur).",
+      "Don't use pill/circular radius except for status badge chips.",
+      "Don't add a light mode, theme toggle, or any prefers-color-scheme: light rule.",
+      "Don't place amber glow on more than the result card."
+    ]
+  }
+}
