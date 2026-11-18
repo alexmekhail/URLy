@@ -16,6 +16,7 @@ const config: Config = {
         glow: '0 0 40px -12px rgba(255, 255, 255, 0.12)',
         'glow-sm': '0 0 20px -8px rgba(255, 255, 255, 0.15)',
         'amber-glow': '0 1px 3px rgba(0,0,0,0.3), 0 0 32px -8px rgba(245,158,11,0.18)',
+        'violet-glow': '0 1px 3px rgba(0,0,0,0.3), 0 0 32px -8px rgba(139,92,246,0.20)',
       },
       keyframes: {
         'fade-in-up': {

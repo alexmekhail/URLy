@@ -15,8 +15,8 @@ export default function LinkUnsafePage() {
         </p>
         <Link
           href="/"
-          className="inline-flex items-center justify-center rounded-xl bg-amber-500 px-5 py-3
-            text-sm font-semibold text-zinc-950 shadow-sm transition hover:bg-amber-600 active:scale-[.97]"
+          className="inline-flex items-center justify-center rounded-xl bg-violet-500 px-5 py-3
+            text-sm font-semibold text-white shadow-sm transition hover:bg-violet-600 active:scale-[.97]"
         >
           Shorten a new link
         </Link>

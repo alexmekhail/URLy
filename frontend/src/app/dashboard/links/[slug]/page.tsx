@@ -66,7 +66,7 @@ export default function LinkStatsPage() {
               onClick={() => setDays(d)}
               className={`rounded-md px-3 py-1 text-xs font-medium transition ${
                 days === d
-                  ? 'bg-amber-500 text-zinc-950'
+                  ? 'bg-violet-500 text-white'
                   : 'text-zinc-400 hover:text-zinc-100'
               }`}
             >
