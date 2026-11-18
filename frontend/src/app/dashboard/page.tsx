@@ -194,9 +194,9 @@ export default function DashboardPage() {
           <button
             onClick={() => void fetchUrls()}
             disabled={loading}
-            className="flex items-center gap-1.5 rounded-lg bg-white px-4 py-2 text-sm
-              font-semibold text-zinc-900 shadow-sm transition
-              hover:bg-zinc-200 disabled:opacity-50"
+            className="flex items-center gap-1.5 rounded-lg bg-amber-500 px-4 py-2 text-sm
+              font-semibold text-zinc-950 shadow-sm transition
+              hover:bg-amber-600 active:scale-[.97] disabled:opacity-50"
           >
             {loading && <Spinner className="h-3.5 w-3.5" />}
             {loading ? 'Loading…' : 'Refresh'}

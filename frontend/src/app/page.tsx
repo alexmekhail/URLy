@@ -5,6 +5,7 @@ import { shortenUrl } from '@/lib/api'
 import { ApiError } from '@/types'
 import Spinner from '@/components/Spinner'
 import QrCode from '@/components/QrCode'
+import { CheckIcon, WarningIcon } from '@/components/icons'
 
 const EXPIRATION_LABELS: Record<string, string> = {
   '': 'Never expires',
@@ -28,10 +29,17 @@ export default function HomePage() {
   const [loading, setLoading] = useState(false)
   const [copied, setCopied] = useState(false)
   const copyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const resultRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     setPreviewHost(window.location.host)
   }, [])
+
+  useEffect(() => {
+    if (shortUrl && resultRef.current) {
+      resultRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }, [shortUrl])
 
   const aliasFormatError =
     alias && !ALIAS_PATTERN.test(alias)
@@ -81,7 +89,7 @@ export default function HomePage() {
     <div className="flex min-h-[calc(100vh-65px)] items-center justify-center px-4 py-12">
       <div className="w-full max-w-lg">
         {/* Hero */}
-        <h1 className="mb-3 text-center text-4xl font-extrabold tracking-tight text-zinc-50 sm:text-5xl">
+        <h1 className="mb-3 text-center text-5xl font-extrabold leading-[1.1] tracking-[-0.025em] text-zinc-50 sm:text-6xl">
           Shorten any URL
         </h1>
         <p className="mb-10 text-center text-base text-zinc-400">
@@ -112,9 +120,10 @@ export default function HomePage() {
             <button
               type="submit"
               disabled={loading || !inputUrl}
-              className="flex shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-5 py-3
-                text-sm font-semibold text-zinc-900 shadow-sm transition
-                hover:bg-zinc-200 active:scale-[.98]
+              className="flex shrink-0 items-center justify-center gap-2 rounded-xl bg-amber-500 px-5 py-3
+                text-sm font-semibold text-zinc-950 shadow-sm transition
+                hover:bg-amber-600 active:scale-[.97]
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950
                 disabled:cursor-not-allowed disabled:opacity-50"
             >
               {loading && <Spinner />}
@@ -131,7 +140,7 @@ export default function HomePage() {
                 value={expiresIn}
                 onChange={(e) => setExpiresIn(e.target.value)}
                 disabled={loading}
-                className="rounded-lg border border-white/10 bg-zinc-900/60 px-2 py-1 text-sm text-zinc-200 transition
+                className="rounded-lg border border-white/10 bg-zinc-900/60 px-2 py-1.5 text-sm text-zinc-200 transition
                   focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/10
                   disabled:opacity-60"
               >
@@ -157,8 +166,8 @@ export default function HomePage() {
           {/* Advanced options — custom alias */}
           {showAdvanced && (
             <div id="advanced-options" className="glass rounded-xl border border-white/10 p-3">
-              <label htmlFor="alias-input" className="mb-1.5 block text-xs font-medium text-zinc-400">
-                Custom alias (optional)
+              <label htmlFor="alias-input" className="mb-1.5 block text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
+                Custom alias
               </label>
               <input
                 id="alias-input"
@@ -191,7 +200,7 @@ export default function HomePage() {
               className="flex items-start gap-1.5 px-1 text-sm text-red-400"
               role="alert"
             >
-              <span aria-hidden>⚠</span>
+              <WarningIcon className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
               {error}
             </p>
           )}
@@ -200,11 +209,12 @@ export default function HomePage() {
         {/* Success result */}
         {shortUrl && (
           <div
-            className="mt-8 animate-fade-in-up rounded-2xl border border-white/10 bg-zinc-900/60 p-5 shadow-glow backdrop-blur-sm"
+            ref={resultRef}
+            className="mt-8 animate-scale-in rounded-2xl border border-white/10 bg-zinc-900/60 p-5 shadow-amber-glow backdrop-blur-sm"
             role="region"
             aria-label="Your short link"
           >
-            <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-zinc-400">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-zinc-500">
               Your short link
             </p>
             <div className="flex items-center gap-3">
@@ -212,19 +222,30 @@ export default function HomePage() {
                 href={shortUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-w-0 flex-1 truncate rounded-lg border border-white/10 bg-zinc-950/60 px-3 py-2
-                  font-mono text-sm text-zinc-100 underline decoration-dotted underline-offset-2 transition hover:text-white"
+                className="min-w-0 flex-1 truncate rounded-lg border border-white/10 bg-zinc-950/60 px-3 py-2.5
+                  font-mono text-sm text-zinc-100 underline decoration-dotted underline-offset-2 transition
+                  hover:border-amber-500/30 hover:text-amber-500"
               >
                 {shortUrl}
               </a>
               <button
                 onClick={handleCopy}
-                className="shrink-0 rounded-lg border border-white/10 bg-white/5 px-3 py-2
-                  text-xs font-semibold text-zinc-200 shadow-sm transition
-                  hover:bg-white/10 active:scale-95"
+                className={`shrink-0 flex items-center gap-1.5 rounded-lg border px-4 py-2.5
+                  text-xs font-semibold shadow-sm transition active:scale-95
+                  ${copied
+                    ? 'border-amber-500/30 bg-amber-500/10 text-amber-400'
+                    : 'border-white/10 bg-white/5 text-zinc-200 hover:bg-white/10 hover:border-white/20'
+                  }`}
                 aria-label={copied ? 'Link copied!' : 'Copy short link'}
               >
-                {copied ? '✓ Copied!' : 'Copy'}
+                {copied ? (
+                  <>
+                    <CheckIcon className="h-3.5 w-3.5" aria-hidden />
+                    Copied!
+                  </>
+                ) : (
+                  'Copy'
+                )}
               </button>
             </div>
             <p className="mt-3 text-xs text-zinc-500">{EXPIRATION_LABELS[resultExpiresIn]}</p>
