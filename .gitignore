@@ -16,3 +16,4 @@ frontend/.env.local
 # Local secrets
 .env.local
 
+.vercel
