@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- dark rounded background -->
+  <rect width="32" height="32" rx="7" fill="#09090b"/>
+  <!-- "y" arms + descender -->
+  <path d="M9 7 L16 18.5 M23 7 L16 18.5 L16 23"
+        stroke="#8b5cf6" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- chain link loop — the URL "link" at the tail -->
+  <ellipse cx="16" cy="25.5" rx="4.5" ry="2.5" stroke="#8b5cf6" stroke-width="2.2"/>
+</svg>
