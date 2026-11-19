@@ -91,8 +91,10 @@ export default function HomePage() {
 
           {/* Left — brand + pitch */}
           <div>
-            <p className="mb-8 text-xs font-bold uppercase tracking-[0.15em] text-violet-400">
-              URLy
+            <p className="mb-8 font-mono text-sm">
+              <span className="text-white/25">/</span>
+              <span className="font-bold text-violet-400">y</span>
+              <span className="text-white/20"> · url shortener</span>
             </p>
             <h1 className="mb-5 text-4xl font-extrabold leading-[1.1] tracking-[-0.03em] text-zinc-50 sm:text-5xl">
               Share any link,{' '}
