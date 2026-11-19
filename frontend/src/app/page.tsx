@@ -91,7 +91,7 @@ export default function HomePage() {
 
           {/* Left — brand + pitch */}
           <div>
-            <p className="mb-8 font-mono text-sm">
+            <p className="mb-3 font-mono text-base">
               <span className="text-white/25">/</span>
               <span className="font-bold text-violet-400">y</span>
               <span className="text-white/20"> · url shortener</span>
