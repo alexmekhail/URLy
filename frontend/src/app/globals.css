@@ -8,10 +8,6 @@
 
 body {
   background-color: #09090b;
-  background-image:
-    radial-gradient(ellipse 55% 32% at 50% 100%, rgba(139, 92, 246, 0.07) 0%, transparent 70%),
-    theme('backgroundImage.dot-grid');
-  background-size: auto, 22px 22px;
 }
 
 /* Violet caret in all text inputs */

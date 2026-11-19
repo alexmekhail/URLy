@@ -30,8 +30,8 @@ export default function Header() {
           className="flex items-baseline gap-0 transition-opacity hover:opacity-75"
           aria-label="URLy home"
         >
-          <span className="font-mono text-[17px] font-medium tracking-tight text-white/40">/</span>
-          <span className="font-mono text-[17px] font-bold tracking-tight text-violet-400">y</span>
+          <span className="font-mono text-[22px] font-medium tracking-tight text-white/30">url/</span>
+          <span className="font-mono text-[22px] font-bold tracking-tight text-violet-400">y</span>
         </Link>
 
         <nav>
